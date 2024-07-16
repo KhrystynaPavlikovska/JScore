@@ -1,0 +1,3 @@
+# JScore
+
+Repository for tasks :)
