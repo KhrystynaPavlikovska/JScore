@@ -52,14 +52,18 @@ alert(`Dear - ${userLogin}, \nyour email -> ${userEmail} \nyour password -> ${us
 //1.8
 console.log("---1.8---");
 let secInMinute = 60;
-let minuteInHour = 60;
+let minutesInHour = 60;
 let hourInDay = 24;
-let dayInMonthEven = 30;
-let dayInMonthOdd = 31;
+let daysInMonthEven = 30;
+let daysInMonthOdd = 31;
 
-let secInHour = secInMinute * minuteInHour;
+let secInHour = secInMinute * minutesInHour;
 let secInDay = secInHour * hourInDay;
-let secInMonthEven = secInDay * dayInMonthEven;
-let secInMonthOdd = secInDay * dayInMonthOdd;
-console.log(secInHour, secInDay, secInMonthEven, secInMonthOdd);
+let secInMonthEven = secInDay * daysInMonthEven;
+let secInMonthOdd = secInDay * daysInMonthOdd;
 
+console.log(`\tSeconds in hour = ${secInHour}
+    Seconds in day = ${secInDay}
+    Seconds in even month = ${secInMonthEven}
+    Seconds in odd month = ${secInMonthOdd}`);
+    
