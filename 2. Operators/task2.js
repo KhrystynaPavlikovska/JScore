@@ -73,12 +73,33 @@ if (userAge >= 18){
 //2.6
 console.log('---2.6---');
 
-let sideA = prompt("(2.6) Triange. Side A:");
-let sideB = prompt("(2.6) Triange. Side B:");
-let sideC = prompt("(2.6) Triange. Side C:");
+let sideA = parseFloat(prompt("(2.6) Triange. Side A:"));
+let sideB = parseFloat(prompt("(2.6) Triange. Side B:"));
+let sideC = parseFloat(prompt("(2.6) Triange. Side C:"));
 
-let perimeter = Number(sideA) + Number(sideB) + Number(sideC);
-console.log("Perimeter of triangle: ", perimeter);
+while (isNaN(sideA) || sideA <= 0) {
+    alert("Incorrect data. Please enter a valid positive number for Side A!");
+    sideA = parseFloat(prompt("Side A:"));
+}
+
+while (isNaN(sideB) || sideB <= 0) {
+    alert("Incorrect data. Please enter a valid positive number for Side B!");
+    sideB = parseFloat(prompt("Side B:"));
+} 
+
+while (isNaN(sideC) || sideC <= 0) {
+    alert("Incorrect data. Please enter a valid positive number for Side C!");
+    sideC = parseFloat(prompt("Side C:"));
+}
+
+console.log("sideA:", sideA)
+console.log("sideB:", sideB)
+console.log("sideC:", sideC)
+
+const s = (sideA + sideB + sideC) / 2;
+const area = Math.sqrt(s * (s - sideA) * (s - sideB) * (s - sideC));
+
+console.log("Area of the triangle:", area.toFixed(3));
 
 if ((sideA**2 === sideB**2 + sideC**2) || (sideB**2 === sideA**2 + sideC**2) || (sideC**2 === sideA**2 + sideB**2)) {
     console.log("Triangle is rectangular!");
@@ -135,6 +156,23 @@ switch (hour) {
         console.log("Hello!");       
 }
 
+//valid swich operator
+switch (true) {
+    case (hour >= 23 && hour < 5):
+        console.log("Good night!");
+        break;
+    case (hour >= 5 && hour < 11):
+        console.log("Good morning!");
+        break;
+    case (hour >= 11 && hour < 17):
+        console.log("Good day!");
+        break;
+    case (hour >= 17 && hour < 23):
+        console.log("Good evening!");
+        break;
+    default:
+        console.log("Hello!");       
+}
 
 //if operator
 if (hour >= 23 && hour < 5) {
