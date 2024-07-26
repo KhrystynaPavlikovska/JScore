@@ -62,8 +62,8 @@ class Person {
     }
 }
 
-let kris = new Person ("Kris", "Pavl");
-kris.showFullName();
+let person1 = new Person ("Kris", "Pavl");
+person1.showFullName();
 
 class Student extends Person {
     constructor (name, surname, year){
@@ -82,9 +82,9 @@ class Student extends Person {
     }
 }
 
-let kriss = new Student ("Kris", "Pavl", 2017);
-kriss.showFullName("Volodm");
-kriss.showCourse();
+let student1 = new Student ("Kris", "Pavl", 2017);
+student1.showFullName("Volodm");
+student1.showCourse();
 
 
 //5.4
@@ -92,13 +92,140 @@ console.log('---5.4---');
 
 class Worker {
     #experience = 1.2;
-    constructor (fullname, dayRate, workingDays) {
+    
+    get showExperience (){
+        return this.#experience;
+    }
+    
+    set setExperience(value){
+        this.#experience = value;
+    }
+    
+    constructor (fullname, dayRate, workingDays){
         this.fullname = fullname;
         this.dayRate = dayRate;
         this.workingDays = workingDays;
     }
-
-    showSalary (){
-        return this.dayRate * this.workingDays;
+    
+    showSalary(){
+        const salary = this.dayRate * this.workingDays;
+        return console.log(`${this.fullname}'s salary: ${salary}`);
+    }
+    
+    showSalaryWithExperience(){
+        const salaryWithExperience = this.dayRate * this.workingDays * this.#experience;
+        //console.log(`${this.fullname}'s salary with experience: ${salaryWithExperience}`);
+        return salaryWithExperience;
     }
 }
+
+let employee1 = new Worker("Khrystyna Pavl", 200, 17);
+console.log("Employee 1: ", employee1.fullname);
+employee1.showSalary();
+console.log("Experience: " + employee1.showExperience);
+console.log(`${employee1.fullname}'s salary with experience: ${employee1.showSalaryWithExperience()}`);
+employee1.setExperience = 1.5;
+console.log("New experience: " + employee1.showExperience);
+console.log(`${employee1.fullname}'s salary with experience: ${employee1.showSalaryWithExperience()}`);
+
+let employee2 = new Worker("John Doe", 400, 23);
+console.log("Employee 2: ", employee2.fullname);
+employee2.showSalary();
+console.log("Experience: " + employee2.showExperience);
+console.log(`${employee2.fullname}'s salary with experience: ${employee2.showSalaryWithExperience()}`);
+employee2.setExperience = 1.5;
+console.log("New experience: " + employee2.showExperience);
+console.log(`${employee2.fullname}'s salary with experience: ${employee2.showSalaryWithExperience()}`);
+
+let employee3 = new Worker("Piter Perry", 480, 15);
+console.log("Employee 3: ", employee3.fullname);
+employee3.showSalary();
+console.log("Experience: " + employee3.showExperience);
+console.log(`${employee3.fullname}'s salary with experience: ${employee3.showSalaryWithExperience()}`);
+employee3.setExperience = 1.5;
+console.log("New experience: " + employee3.showExperience);
+console.log(`${employee3.fullname}'s salary with experience: ${employee3.showSalaryWithExperience()}`);
+
+let employee4 = new Worker("Jane Doe", 600, 11);
+console.log("Employee 4: ", employee4.fullname);
+employee4.showSalary();
+console.log("Experience: " + employee4.showExperience);
+console.log(`${employee1.fullname}'s salary with experience: ${employee1.showSalaryWithExperience()}`);
+employee4.setExperience = 1.5;
+console.log("New experience: " + employee4.showExperience);
+console.log(`${employee1.fullname}'s salary with experience: ${employee1.showSalaryWithExperience()}`);
+
+
+let employees = [employee1, employee2, employee3, employee4];
+employees.sort(function(a, b){
+    return a.showSalaryWithExperience() - b.showSalaryWithExperience();
+});
+
+console.log("Sorted salary:");
+employees.forEach(function(employee){
+    console.log(`${employee.fullname}: ${employee.showSalaryWithExperience()}`);
+});
+
+
+//5.5
+console.log('---5.5---');
+
+class GeometricFigure {
+    getArea(){
+        return 0;
+    }
+
+    toString(){
+        return Object.getPrototypeOf(this).constructor.name;
+    }
+}
+
+class Triangle extends GeometricFigure {
+    constructor(side, height){
+        super();
+        this.side = side;
+        this.height = height;
+    }
+
+    getArea(){
+        return 0.5 * this.side * this.height;
+    }
+}
+
+class Square extends GeometricFigure {
+    constructor(side){
+        super();
+        this.side = side;
+    }
+
+    getArea(){
+        return Math.pow(this.side, 2);
+    }
+}
+
+class Circle extends GeometricFigure {
+    constructor(radius){
+        super();
+        this.radius = radius;
+    }
+
+    getArea(){
+        return Math.PI * Math.pow(this.radius, 2);
+    }
+}
+
+function handleFigures(figures) {
+    let totalArea =  figures.reduce(function(accumulator, figure){
+        if (figure instanceof GeometricFigure){
+            let area = figure.getArea();
+            console.log(`Geometric figure: ${figure.toString()} - area: ${area}`);
+            accumulator += area;
+        } 
+        return accumulator;
+    }, 0);
+
+    return totalArea;
+}
+
+const figures = [new Triangle(4, 5), new Square(7), new Circle(5)];
+console.log(handleFigures(figures));
