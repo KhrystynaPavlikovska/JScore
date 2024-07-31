@@ -8,10 +8,12 @@
 
 <body>
     <h4> Java Script. 6 </h4>
-    <br />
+
+    <br /> <!--6.1-->
 
     <div id="test">First</div>
-    <br /><hr><br />
+
+    <br /><hr><br /> <!--6.2-->
 
     <button class="myBtn">Open Modal</button>
 
@@ -22,7 +24,8 @@
             <img class="image" src="dog.jpg">
         </div>
     </div>
-    <br /><br /><hr><br />
+
+    <br /><br /><hr><br /> <!--6.3-->
 
     <div id="text">
         <p>First paragraph</p>
@@ -30,7 +33,8 @@
         <p>Third paragraph</p>
     </div>
     <p>Another text</p>
-    <br /><hr /><br />
+
+    <br /><hr /><br /> <!--6.4-->
 
     <ul id="list">
         <li>1</li>
@@ -52,67 +56,29 @@
         </div>
     </div>
 
-    <script>
-        //6.1
-        console.log("~ 6.1:");
-
-        //let divElem = document.getElementById("test");   //1 way
-        let divElem = document.querySelector("#test");     //2 way
-
-        console.log(divElem.innerHTML);
-        divElem.innerHTML = 'Second';
-        console.log(divElem.innerHTML);
-
-        //6.2
-        console.log("~ 6.2:");
-
-        let imgElem = document.querySelector('img');
-        imgElem.src = 'cat.jpg';
-
-        //6.3
-        console.log("~ 6.3:");
-
-        let divWithParagraphs = document.querySelector('#text');
-        let pElems = divWithParagraphs.querySelectorAll('p');
-
-        pElems.forEach(function(p, index){
-            console.log(`paragrath: ${index}: ${p.textContent}` );
-        });
-
-        //6.4
-        console.log("~ 6.4:");
-
-        //1 way
-        let liElems = document.querySelectorAll('#list li');
-
-        let orderedList = []; //1 5 2 4 3
-        orderedList.push(liElems[0].textContent);
-        orderedList.push(liElems[liElems.length - 1].textContent);
-        orderedList.push(liElems[1].textContent);
-        orderedList.push(liElems[3].textContent);
-        orderedList.push(liElems[2].textContent);
-        console.log("Ordered list: ", orderedList);
-
-        //2 way 
-        /*
-        function getOrderedListLi(index) {
-            let liElems2 = document.querySelectorAll('#list li');
-            let orderedList2 = index.map(function(number) {
-                return liElems[number].textContent;
-            });
-            return orderedList;
-        }
-
-        let index = [0, 4, 1, 3, 2];
-        let orderedList2 = getOrderedListLi(index);
-        console.log("Ordered list2: ", orderedList2); */
-
-        document.getElementById('modalContent').textContent = orderedList.join(', ');
-
-        
-    </script>
-
-
+    <br /><hr /><br /> <!--6.5-->
+    <div id="styles">
+        <h1>I'am a big header!!!</h1>
+        <div id="myDiv">
+            <p>First paragraph</p>
+            <p>Second paragraph</p>
+            <p>Third paragraph</p>
+            <p>Fourth paragraph</p>
+        </div>
+        <ul id="myList">
+            <li>Make</li>
+            <li>me</li>
+            <li>horizontal!</li>
+        </ul>
+        <span>Make me invisible, please!</span>
+    </div>
+    
+    <br /><hr /><br /> <!--6.6-->
+    
+    <input type="text" id="input1" value="Text1">
+    <input type="text" id="input2" value="Text2">
+    
+    <script src="./task6.js"></script>
     <script src="./block.js"></script>
 
 
